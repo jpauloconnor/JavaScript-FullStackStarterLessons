@@ -76,6 +76,11 @@ hr {
     grid-area: nine;
 }
 
+
+.ten{
+    grid-area: ten;
+}
+
 .grid {
     display: grid;
     grid-column-gap: 10px;
@@ -87,7 +92,7 @@ hr {
         "three four"
         "five six"
         "seven eight"
-        "nine.";
+        "nine ten";
         margin: 5% 20%;
 }
 .box {
