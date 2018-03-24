@@ -59,4 +59,30 @@ router.get('/:id', function(req, res) {
 });
 
 
+router.put('/update/:id', function(req, res) {
+	var authtestdata = req.body.authtestdata.item;
+	var userid = req.user.id;
+	var data = req.params.id;
+
+
+    AuthTestModel
+    	.update(
+    	{
+    		authtestdata: authtestdata
+    	},
+
+    	{where: {owner: userid, owner: userid}}
+    	).then(
+    		function updateSuccess(updatedLog) {
+    			res.json(updatedLog);
+    		},
+    		function updateError(err){
+    			res.send(500, err.message);
+    		}
+    	)
+});
+
+
+
+
 module.exports = router;
