@@ -1,0 +1,97 @@
+body {
+    background: #708090;
+    margin: 40px;
+}
+
+h1 {
+    text-align: left;
+    text-overflow: clip;
+    margin: 0px;
+}
+
+button{
+    width: auto;
+    height: auto;
+    padding: 5px 25px 5px 25px;
+    box-shadow: 2px 3px 8px;
+    border-radius: 20px;
+    border-color: #E0F0FF;
+    position: relative;
+    margin: 10px 0px 0px 25px;
+    top: 0;
+    left: 0;
+    align-self: center;
+}
+
+p{
+    margin: 25px 285px 25px 0px;
+    position: relative;
+    text-align: left;
+    top: 0;
+    left: 3%;
+}
+
+hr {
+    border: 3px solid black;
+    width: auto;
+}
+
+.header {
+    grid-area: header;
+}
+
+.one {
+    grid-area: one;
+}
+
+.two {
+    grid-area: two;
+}
+
+.three {
+    grid-area: three;
+}
+
+.four {
+    grid-area: four;
+}
+
+.five {
+    grid-area: five;
+}
+
+.six {
+    grid-area: six;
+}
+
+.seven {
+    grid-area: seven;
+}
+
+.eight{
+    grid-area: eight;
+}
+
+.nine{
+    grid-area: nine;
+}
+
+.grid {
+    display: grid;
+    grid-column-gap: 10px;
+    grid-row-gap: 20px;
+    grid-template-columns: 50% 50%;
+    grid-template-areas: 
+        "header header"
+        "one two"
+        "three four"
+        "five six"
+        "seven eight"
+        "nine.";
+        margin: 5% 20%;
+}
+.box {
+    border: 4px outset #E0F0FF;
+    padding: 20px;
+    justify-content:center
+}
