@@ -41,6 +41,9 @@ router.post('/create', function (req, res) {
 		);
 });
 
+/**
+ * GET SINGLE ITEM
+ */
 router.get('/:id', function(req, res) {
 	var data = req.params.id;
 	var userid = req.user.id;
@@ -60,22 +63,20 @@ router.get('/:id', function(req, res) {
 
 
 router.put('/update/:id', function(req, res) {
+	var data = req.params.id;
 	var authtestdata = req.body.authtestdata.item;
 	var userid = req.user.id;
-	var data = req.params.id;
-
 
     AuthTestModel
-    	.update(
-    	{
+    	.update({
     		authtestdata: authtestdata
     	},
-
-    	{where: {owner: userid, owner: userid}}
+    	{where: {id: data}}
     	).then(
     		function updateSuccess(updatedLog) {
-    			res.json(updatedLog);
-    		},
+				res.json({
+					authtestdata: authtestdata
+				});    		},
     		function updateError(err){
     			res.send(500, err.message);
     		}
