@@ -41,49 +41,64 @@ router.post('/create', function (req, res) {
 		);
 });
 
+/**
+ * GET SINGLE ITEM
+ */
+router.get('/:id', function(req, res) {
+	var data = req.params.id;
+	var userid = req.user.id;
+
+	AuthTestModel
+		.findOne({
+			where: { id: data, owner: userid }
+		}).then(
+			function findOneSuccess(data) {
+				res.json(data);
+			},
+			function findOneError(err) {
+				res.send(500, err.message);
+			}
+		);
+});
 
 
+router.put('/update/:id', function(req, res) {
+	var data = req.params.id;
+	var authtestdata = req.body.authtestdata.item;
 
-// router.get('/id', function(req, res) {
-// 	var data = req.params.id;
-// 	var userid = req.user.id;
+    AuthTestModel
+    	.update({
+    		authtestdata: authtestdata
+    	},
+    	{where: {id: data}}
+    	).then(
+    		function updateSuccess(updatedLog) {
+				res.json({
+					authtestdata: authtestdata
+				});    		},
+    		function updateError(err){
+    			res.send(500, err.message);
+    		}
+    	)
+});
 
-// 	AuthTestModel
-// 		.findOne({
-// 			where: { id: data, owner: userid }
-// 		}).then(
-// 			function getSuccess(updateData) {
-// 				res.json(updateData);
-// 			},
+router.delete('/delete/:id', function(req, res) {
+	var data = req.params.id;
+	var userid = req.user.id;
+	
+	AuthTestModel
+		.destroy({
+			where: { id: data, owner: userid }
+		}).then(
+			function deleteLogSuccess(data){
+				res.send("you removed a log");
+			},
+			function deleteLogError(err){
+				res.send(500, err.message);
+			}
+		);
+});
 
-// 			function getError(err) {
-// 				res.send(500, err.message);
-// 			}
-// 		);
-// });
 
-
-
-
-
-// router.post('/one', function(req, res) {
-
-//     var authTestData = req.body.authtestdata.item;
-// 	var user = req.user;
-
-//   	AuthTestModel
-// 	    .create({
-// 			authtestdata: authTestData,
-// 			owner: user.id
-// 	    })
-// 	    .then(
-// 	    	function createSuccess(data) {
-// 	    		res.json(data);
-// 	    	},
-// 		    function createError(err) {
-// 		        res.send(500, err.message);
-// 		    }
-// 	    );
-// });
 
 module.exports = router;
