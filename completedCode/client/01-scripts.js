@@ -106,7 +106,7 @@ function fetchFromOneDisplayData(){
  * POST w/ fetch() and the Test Data
 **************************************/
 function postData() {
-	let content = { testdata: { item: 'This was saved to the DB' } };
+	let content = { testdata: { item: 'This was saved!' } };
 	let testDataAfterFetch = document.getElementById('test-data');
 	let createdAtAfterFetch = document.getElementById('created-at');
 

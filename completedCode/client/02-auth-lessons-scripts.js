@@ -59,7 +59,7 @@ function postToAuthRouteCreate() {
 *************************************/
 
 function getOneByUser() {
-	const fetch_url = `http://localhost:3000/authtest/13`
+	const fetch_url = `http://localhost:3000/authtest/15`
 	const accessToken = localStorage.getItem('SessionToken')
 
 	const response = fetch(fetch_url, {
@@ -75,6 +75,7 @@ function getOneByUser() {
 		
 	})
 	.then(function(response){
+		console.log(response);
 		var myItem = document.querySelector('section.auth-test-put');
 		var inputItem = document.createElement('input');
 		inputItem.setAttribute("id", "auth-put");
@@ -94,7 +95,7 @@ function getOneByUser() {
 
 
 function updateItem() {
-	const fetch_url = `http://localhost:3000/authtest/update/13`
+	const fetch_url = `http://localhost:3000/authtest/update/15`
 	const accessToken = localStorage.getItem('SessionToken')
     let authTestDataInput = document.getElementById('auth-put').value;
 
@@ -113,5 +114,24 @@ function updateItem() {
 	})
 	.then(data => {
 		console.log(data)
+	})
+}
+
+
+
+function deleteItem() {
+	const fetch_url = `http://localhost:3000/authtest/delete/16`
+	const accessToken = localStorage.getItem('SessionToken')
+
+	const response = fetch(fetch_url, {
+		method: 'DELETE',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+		  'Authorization': accessToken
+		}
+	})
+	.then(response => {
+		console.log(response);
 	})
 }
