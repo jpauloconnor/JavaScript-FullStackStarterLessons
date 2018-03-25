@@ -1,0 +1,2 @@
+# JavaScript-FullStackStarterLessons
+This project aims to exhibit, in a scaffolded way, how to use the Fetch API with an Express server using Postgres &amp; Sequelize. Again, the client side uses plain JavaScript with the Fetch API for all calls. A simple Bootstrap table is set up for organizing the lessons in a scaffolded way. If you are playing around with this app, make note that you will need Postgres set up, and you will have to manually change some of the param ids in the Fetch calls based on your DB table.
