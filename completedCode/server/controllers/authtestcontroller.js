@@ -65,7 +65,6 @@ router.get('/:id', function(req, res) {
 router.put('/update/:id', function(req, res) {
 	var data = req.params.id;
 	var authtestdata = req.body.authtestdata.item;
-	var userid = req.user.id;
 
     AuthTestModel
     	.update({
@@ -83,6 +82,23 @@ router.put('/update/:id', function(req, res) {
     	)
 });
 
+router.delete('/delete/:id', function(req, res) {
+	var data = req.params.id;
+	var authtestdata = req.body.authtestdata.item;
+	var userid = req.user.id;
+	
+	AuthTestModel
+		.destroy({
+			where: { id: data }
+		}).then(
+			function deleteLogSuccess(data){
+				res.send("you removed a log");
+			},
+			function deleteLogError(err){
+				res.send(500, err.message);
+			}
+		);
+});
 
 
 
