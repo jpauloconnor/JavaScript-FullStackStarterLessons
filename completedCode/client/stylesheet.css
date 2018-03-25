@@ -1,4 +1,4 @@
-body {
+/* body {
     background: #708090;
     margin: 40px;
 }
@@ -81,6 +81,10 @@ hr {
     grid-area: ten;
 }
 
+
+.eleven{
+    grid-area: eleven;
+}
 .grid {
     display: grid;
     grid-column-gap: 10px;
@@ -92,11 +96,12 @@ hr {
         "three four"
         "five six"
         "seven eight"
-        "nine ten";
+        "nine ten"
+        "eleven.";
         margin: 5% 20%;
 }
 .box {
     border: 4px outset #E0F0FF;
     padding: 20px;
     justify-content:center
-}
+} */

@@ -21,7 +21,7 @@ function fetchFromAuthRouteOne () {
 	})
 	.then(data => {
 		console.log(data)
-	})   
+	})
 }
 
 
@@ -50,7 +50,7 @@ function postToAuthRouteCreate() {
 	})
 	.then(data => {
 		console.log(data)
-	})   
+	})
 }
 
 
@@ -59,7 +59,7 @@ function postToAuthRouteCreate() {
 *************************************/
 
 function getOneByUser() {
-	const fetch_url = `http://localhost:3000/authtest/10`
+	const fetch_url = `http://localhost:3000/authtest/13`
 	const accessToken = localStorage.getItem('SessionToken')
 
 	const response = fetch(fetch_url, {
@@ -72,15 +72,46 @@ function getOneByUser() {
 	})
 	.then(response => {
 		return response.json();
+		
+	})
+	.then(function(response){
+		var myItem = document.querySelector('section.auth-test-put');
+		var inputItem = document.createElement('input');
+		inputItem.setAttribute("id", "auth-put");
+		inputItem.value = response.authtestdata;
+		myItem.appendChild(inputItem);
+	})
+}
+
+/***************************************
+ * FETCH/PUT to Auth/Create
+*************************************/
+
+    let authTestDataInput = document.getElementById('authTestData').value;
+
+	let authInputData = {authtestdata : { item: authTestDataInput}};
+
+
+
+function updateItem() {
+	const fetch_url = `http://localhost:3000/authtest/update/13`
+	const accessToken = localStorage.getItem('SessionToken')
+    let authTestDataInput = document.getElementById('auth-put').value;
+
+	let authInputData = {authtestdata : { item: authTestDataInput}};
+	const response = fetch(fetch_url, {
+		method: 'PUT',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+		  'Authorization': accessToken
+		},
+		body: JSON.stringify(authInputData)
+	})
+	.then(response => {
+		return response.json();
 	})
 	.then(data => {
-		var inputs = Array.prototype.slice.call(document.querySelectorAll('form input'));
-
-		Object.keys(data).map(function (dataItem){
-			console.log(data);
-			inputs.map(function (inputItem) {
-				return (inputItem.name === dataItem) ? (inputItem.value = data[dataItem]) : false;
-			  });
-		})
-	})   
+		console.log(data)
+	})
 }
