@@ -85,13 +85,6 @@ function getOneByUser() {
 /***************************************
  * FETCH/PUT to Auth/Create
 *************************************/
-
-    let authTestDataInput = document.getElementById('authTestData').value;
-
-	let authInputData = {authtestdata : { item: authTestDataInput}};
-
-
-
 function updateItem() {
 	const fetch_url = `http://localhost:3000/authtest/update/15`
 	const accessToken = localStorage.getItem('SessionToken')
@@ -133,3 +126,22 @@ function deleteItem() {
 		console.log(response);
 	})
 }
+
+
+function deleteItemById(paramNum) {
+	const fetch_url = `http://localhost:3000/authtest/delete/${paramNum}`
+	const accessToken = localStorage.getItem('SessionToken')
+
+	const response = fetch(fetch_url, {
+		method: 'DELETE',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+		  'Authorization': accessToken
+		}
+	})
+	.then(response => {
+		console.log(response);
+	})
+}
+
