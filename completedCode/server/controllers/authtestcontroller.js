@@ -62,6 +62,23 @@ router.get('/:id', function(req, res) {
 });
 
 
+
+router.get('/getall', function(req, res) {
+	var userid = req.user.id;
+
+	AuthTestModel
+		.findAll({
+			where: { owner: userid }
+		}).then(
+			function findOneSuccess(data) {
+				res.json(data);
+			},
+			function findOneError(err) {
+				res.send(500, err.message);
+			}
+		);
+});
+
 router.put('/update/:id', function(req, res) {
 	var data = req.params.id;
 	var authtestdata = req.body.authtestdata.item;
